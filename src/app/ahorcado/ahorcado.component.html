@@ -1,0 +1,28 @@
+<div class="alert alert-success" *ngIf="!staticAlertWinnClosed">
+    <strong>Salvado!</strong> 
+  </div>
+
+  <div class="alert alert-danger" *ngIf="!staticAlertLoserClosed">
+    <strong>Se muriooooo!</strong> 
+  </div>
+
+<div class="row">
+    <div class="col_one text-center" style="height: 403px;">
+        <img src="assets/img/{{img}}" alt="ahorcado-img" class="ahorcado-img" style="height: 329px;">
+
+        <h3>Intentos <small>{{num_fail}} / 9</small></h3>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col text-center">
+        <h1  >{{wordRplace}}</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col text-center">
+        <button *ngFor="let letra of letras" [disabled]="swtb" (click) = "forward_img(letra)" class="btn btn-primary"> {{ letra }} </button>
+    </div>
+</div>
