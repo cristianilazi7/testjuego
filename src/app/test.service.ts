@@ -55,4 +55,10 @@ export class TestService {
            .get(`${this.uri}/user`);
   }
 
+  deleteUser(id) {
+    return this
+              .http
+              .get(`${this.uri}/user/delete/${id}`);
+  }
+
 }

@@ -75,6 +75,7 @@ export class UserEditComponent implements OnInit {
           this.staticAlertLoserClosed = false;
         }
       });
+      location.reload();
        this.router.navigate(['ahorcado/user']);
   });
   }

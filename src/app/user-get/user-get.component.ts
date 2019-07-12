@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import  User  from '../shared/user';
 import { TestService } from '../test.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-get',
@@ -9,8 +10,9 @@ import { TestService } from '../test.service';
 })
 export class UserGetComponent implements OnInit {
   Users :  User[];
-
-  constructor(private Tserv: TestService) { 
+  staticAlertWinnClosed = true;
+  staticAlertLoserClosed = true;
+  constructor(private Tserv: TestService,private router: Router,) { 
     this.getUsers();
   }
 
@@ -25,6 +27,23 @@ export class UserGetComponent implements OnInit {
     .subscribe((data: User[]) => {
       this.Users = data;
   });
+  
+      
   }
+
+  DeletUser(id) {
+    this.Tserv.deleteUser(id).subscribe(res => {
+      console.log('Done',res)  
+      var result:any = res;
+      if(result.status == 200){
+        this.staticAlertWinnClosed = false;
+      }else{
+        this.staticAlertLoserClosed = false;
+      }
+      location.reload();
+      this.router.navigate(["ahorcado/user"])
+    });
+  }
+
 
 }

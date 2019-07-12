@@ -65,7 +65,8 @@ export class UserAddComponent implements OnInit {
         this.staticAlertLoserClosed = false;
       }
     });
-   
+    
+    this.router.navigate(["ahorcado/user"])
     
 
   }
