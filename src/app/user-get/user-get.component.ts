@@ -11,19 +11,20 @@ export class UserGetComponent implements OnInit {
   Users :  User[];
 
   constructor(private Tserv: TestService) { 
-    this.Tserv
-      .getUser()
-      .subscribe((data: User[]) => {
-        this.Users = data;
-    });
+    this.getUsers();
   }
 
   ngOnInit() {
+    this.getUsers();
+    console.log("entro a pagina")
+  }
+
+  getUsers(){
     this.Tserv
-      .getUser()
-      .subscribe((data: User[]) => {
-        this.Users = data;
-    });
+    .getUser()
+    .subscribe((data: User[]) => {
+      this.Users = data;
+  });
   }
 
 }

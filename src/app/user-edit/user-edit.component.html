@@ -1,3 +1,113 @@
-<p>
-  user-edit works!
-</p>
+
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="angForm" novalidate>
+
+
+ <div class="form-group">
+        <label class="col-md-4">Identificacion</label>
+       
+        <input type="number" class="form-control" formControlName="ID" #ID [(ngModel)] = "User.id"/>
+      </div>
+      <div *ngIf="angForm.controls['ID'].invalid && (angForm.controls['ID'].dirty || angForm.controls['ID'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['ID'].errors.required">
+         Identificacion es requerida.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4">Nombre</label>
+       
+        <input type="text" class="form-control" formControlName="name" #name [(ngModel)] = "User.name"/>
+      </div>
+      <div *ngIf="angForm.controls['name'].invalid && (angForm.controls['name'].dirty || angForm.controls['name'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['name'].errors.required">
+         Nombre es requerido.
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label class="col-md-4">Apellidos</label>
+       
+        <input type="text" class="form-control" formControlName="last_name" #last_name [(ngModel)] = "User.last_name"/>
+      </div>
+      <div *ngIf="angForm.controls['last_name'].invalid && (angForm.controls['last_name'].dirty || angForm.controls['last_name'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['last_name'].errors.required">
+         Apellido es requerido.
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label class="col-md-4">Email</label>
+       
+        <input type="email" class="form-control" formControlName="email" #email [(ngModel)] = "User.email"/>
+      </div>
+      <div *ngIf="angForm.controls['email'].invalid && (angForm.controls['email'].dirty || angForm.controls['email'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['email'].errors.required">
+         Email es requerido.
+        </div>
+      </div>
+
+
+      <div class="form-group">
+       
+        <label class="col-md-4">Telefono</label>
+        <br>
+       <ngx-intl-tel-input
+    [cssClass]="'form-control phone'"
+    [preferredCountries]="preferredCountries"
+    [enableAutoCountrySelect]="false"
+    [enablePlaceholder]="true"
+    [searchCountryFlag]="true"
+    [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
+    [selectFirstCountry]="false"
+    [selectedCountryISO]="CountryISO.Colombia"
+    [maxLength]="15"
+    [tooltipField]="TooltipLabel.Name"
+    [phoneValidation]="true"
+    name="phone_number"
+    formControlName="phone_number" #phone_number
+    [(ngModel)] = "User.phone"></ngx-intl-tel-input>
+    </div>
+
+ 
+
+      <div *ngIf="angForm.controls['phone_number'].invalid" class="alert alert-danger">
+        <div *ngIf="angForm.controls['phone_number'].errors.required">
+         telefono es requerido.
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label class="col-md-4">Direccion</label>
+       
+        <input type="text" class="form-control" formControlName="address" #address [(ngModel)] = "User.address"/>
+      </div>
+      <div *ngIf="angForm.controls['address'].invalid && (angForm.controls['address'].dirty || angForm.controls['address'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['address'].errors.required">
+         Direccion es requerida.
+        </div>
+      </div>
+
+
+       
+      <div class="form-group">
+        <button (click)="updateUser()"
+        [disabled]="angForm.pristine || angForm.invalid" 
+        class="btn btn-primary">
+        Guardar
+     </button>
+      </div>
+    </form>
+  </div>
+  <div class="alert alert-success" *ngIf="!staticAlertWinnClosed">
+    <strong>Actualizado!</strong> 
+  </div>
+
+  <div class="alert alert-danger" *ngIf="!staticAlertLoserClosed">
+    <strong>Error!</strong> 
+  </div>
+</div>

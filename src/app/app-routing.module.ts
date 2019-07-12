@@ -13,7 +13,7 @@ const routes: Routes = [
     component: UserAddComponent
   },
   {
-    path: 'ahorcado/edit/:id',
+    path: 'ahorcado/user/edit/:id',
     component: UserEditComponent
   },
   {
