@@ -1,3 +1,6 @@
+<div class="table-responsive-md">
+<label ><h1>Usuarios</h1></label>
+
 <div class="alert alert-success" *ngIf="!staticAlertWinnClosed">
     <strong>Eliminado!</strong> 
   </div>
@@ -9,13 +12,13 @@
   <thead>
   <tr>
    
-      <td>Id</td>
-      <td>Nombre</td>
-      <td>Apellido</td>
-      <td>Email</td>
-      <td>Direccion</td>
-      <td>Telefono</td>      
-   <td colspan="2">Actions</td>
+      <th scope="col">Id</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellido</th>
+      <th scope="col">Email</th>
+      <th scope="col">Direccion</th>
+      <th scope="col">Telefono</th>      
+   <th colspan="2">Actions</th>
   </tr>
   </thead>
 
@@ -27,8 +30,11 @@
           <td>{{ user.email }}</td>
           <td>{{ user.address }}</td>
           <td>{{ user.code_contry }} {{  user.phone }}</td>
-          <td><a [routerLink]="['edit', user._id]" class="btn btn-primary">Edit</a></td>
-       <td><a (click) = "DeletUser(user._id)" class="btn btn-danger">Delete</a></td>
+          <td>
+          <button type="button" [routerLink]="['edit', user._id]" class="btn btn-primary btn-sm m-0 waves-effect">Editar</button>
+          
+       <td><button type="button" (click) = "DeletUser(user._id)" class="btn btn-danger btn-sm m-0 waves-effect">Danger</button></td>
       </tr>
   </tbody>
 </table>
+</div>
